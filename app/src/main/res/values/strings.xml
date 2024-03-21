@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">APP_DietaCheck</string>
+    <string name="principal_name">Seja Saudável</string>
+    <string name="txt_principal">IMC é a sigla para Índice de Massa Corporal que serve para avaliar o peso
+        do indivíduo em relação à sua altura e assim indicar se está dentro do peso ideal,
+        acima ou abaixo do peso desejado.\n\nPreencha os campos de peso e altura para descobrir o seu IMC.</string>
+    <string name="label_weight">Peso (Kg)</string>
+    <string name="label_height">Altura (cm)</string>
+    <string name="txt_calculate">Calcular IMC</string>
+    <string name="validate">Todos os campos devem ser maior que 0 (zero)</string>
+    <string name="titleIMC">Cálculo de IMC</string>
+    <string name="initial_value">0.0</string>
+    <string name="txt_result">Seu IMC é:</string>
+    <string name="magreza">Magreza</string>
+    <string name="normal">Normal</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="obesidade">Obesidade</string>
+    <string name="obesidade_grave">Obesidade Grave</string>
+
+
+</resources>

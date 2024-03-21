@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:background="@color/white"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+<com.google.android.material.appbar.MaterialToolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/red"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    >
+
+    <ImageView
+        android:id="@+id/logo_toolbar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/baseline_medical_services_24">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/txt_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/principal_name"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        />
+</com.google.android.material.appbar.MaterialToolbar>
+
+<ScrollView
+
+    android:id="@+id/main"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity"
+    android:layout_below="@id/toolbar"
+    >
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/txt_principal"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_weight"
+            android:hint="@string/label_weight"
+            android:textColorHint="@color/black"
+            style="@style/TextInputLayout"                >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_edt_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_height"
+            android:hint="@string/label_height"
+            style="@style/TextInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/TextInputEditText"
+                android:id="@+id/input_edt_height"
+                android:inputType="number"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_imc_generate"
+            style="@style/MaterialButton"
+            android:text="@string/txt_calculate" />
+
+        <TextView
+            android:id="@+id/label_result"
+            tools:text="@string/txt_result"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:padding="0dp"
+            android:layout_marginTop="20dp"
+            style="@style/TextView"/>
+
+        <TextView
+            android:id="@+id/txt_result"
+            tools:text="@string/initial_value"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:padding="0dp"
+            style="@style/TextView"/>
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+
+</RelativeLayout>
