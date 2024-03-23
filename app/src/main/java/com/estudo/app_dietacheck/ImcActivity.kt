@@ -1,14 +1,14 @@
 package com.estudo.app_dietacheck
 
-import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import com.estudo.app_dietacheck.databinding.ActivityImcBinding
-import java.text.DecimalFormat
-import kotlin.math.round
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+
 
 class ImcActivity : AppCompatActivity() {
 
@@ -31,7 +31,6 @@ class ImcActivity : AppCompatActivity() {
 
         val btnCalculate: Button = binding.btnImcGenerate
         val txtToolbar = binding.txtToolbar
-        val txtResult = binding.txtResult
 
         txtToolbar.text = getString(R.string.titleIMC)
 
@@ -45,35 +44,33 @@ class ImcActivity : AppCompatActivity() {
             val height = editHeight.text.toString().toInt()
 
             val result = calculateImc(weight, height)
+            val classification = getString(classification(result))
 
-            val df = DecimalFormat("0.00")
-            txtResult.text = df.format(result)
-
-            if (result <= 18.5){
-                binding.labelResult.text = "Seu IMC é: ${getString(R.string.magreza)}"
-                txtResult.setTextColor(Color.YELLOW)
-            }else if (result > 18.5 && result <= 24.9){
-                binding.labelResult.text = "Seu IMC é: ${getString(R.string.normal)}"
-                txtResult.setTextColor(Color.BLACK)
-            }else if(result > 24.9 && result <= 29.99){
-                binding.labelResult.text = "Seu IMC é: ${getString(R.string.sobrepeso)}"
-                txtResult.setTextColor(Color.GRAY)
-            }else if (result > 29.99 && result <= 39.99){
-                binding.labelResult.text = "Seu IMC é: ${getString(R.string.obesidade)}"
-                txtResult.setTextColor(Color.rgb(255,69,0))
-            }else{
-                binding.labelResult.text = "Seu IMC é: ${getString(R.string.obesidade_grave)}"
-                txtResult.setTextColor(Color.RED)
-            }
-
+            MaterialAlertDialogBuilder(
+                this,
+                androidx.appcompat.R.style.Animation_AppCompat_Dialog
+            )
+                .setTitle(R.string.txt_result)
+                .setMessage(getString(R.string.messageIMC, result, classification))
+                .setIcon(R.drawable.baseline_medical_services_24_red)
+                .setPositiveButton(android.R.string.ok, null)
+                .create()
+                .show()
         }
     }
-
+    @StringRes
+    private fun classification(result: Double): Int {
+        return when {
+            result <= 18.5 -> R.string.magreza
+            result <= 24.9 -> R.string.normal
+            result <= 29.99 -> R.string.sobrepeso
+            result <= 39.99 -> R.string.obesidade
+            else -> R.string.obesidade_grave
+        }
+    }
     private fun calculateImc(weight: Int, height: Int): Double {
-        // peso / (altura * altura)
         return weight / ((height / 100.0) * (height / 100.0))
     }
-
     private fun validate(): Boolean {
         return (editWeight.text.toString().isNotEmpty()
                 && editHeight.text.toString().isNotEmpty()
