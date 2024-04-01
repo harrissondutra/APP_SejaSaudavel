@@ -18,7 +18,6 @@ class ListCalcActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCalcBinding
     private lateinit var recyclerView: RecyclerView
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,6 +42,7 @@ class ListCalcActivity : AppCompatActivity() {
                 result.addAll(response)
                 adapter.notifyDataSetChanged()
             }
+
         }.start()
     }
 
