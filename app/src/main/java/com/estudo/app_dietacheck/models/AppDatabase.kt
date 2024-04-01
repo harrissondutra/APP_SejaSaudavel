@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 
 @Database(entities = [Calc::class], version = 1)
 @TypeConverters(DateConverter::class)
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun calcDao(): CalcDao
 
@@ -16,17 +16,17 @@ abstract class AppDatabase: RoomDatabase() {
 
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase{
-            return if(INSTANCE == null){
-                synchronized(this){
+        fun getDatabase(context: Context): AppDatabase {
+            return if (INSTANCE == null) {
+                synchronized(this) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         AppDatabase::class.java,
-                        "app_database"
+                        "fitness_tracker"
                     ).build()
                 }
                 INSTANCE as AppDatabase
-            }else{
+            } else {
                 INSTANCE as AppDatabase
 
             }

@@ -24,21 +24,16 @@ class ListCalcActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_list_calc)
 
-
-
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
 
         recyclerView = binding.rvListImc
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-
-
-        //Este valor não está chegando
-        val type: String = intent?.extras?.getString("type").toString()
+        recyclerView.setHasFixedSize(true)
 
 //        Está dando erro aqui
-//        val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
+        val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
 
         Thread {
             val app = application as App

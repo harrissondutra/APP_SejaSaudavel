@@ -8,8 +8,8 @@ import androidx.room.Query
 interface CalcDao {
 
     @Insert
-     fun insert(calc: Calc)
+    fun insert(calc: Calc)
 
     @Query("SELECT * FROM Calc WHERE type = :type")
-    fun getRegisterByType(type: String) : List<Calc>
+    fun getRegisterByType(type: String): List<Calc>
 }
