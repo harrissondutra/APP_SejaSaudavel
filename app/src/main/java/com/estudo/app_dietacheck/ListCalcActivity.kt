@@ -1,5 +1,6 @@
 package com.estudo.app_dietacheck
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,7 @@ class ListCalcActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListCalcBinding
     private lateinit var recyclerView: RecyclerView
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,13 +28,10 @@ class ListCalcActivity : AppCompatActivity() {
 
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
-
         recyclerView = binding.rvListImc
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-        recyclerView.setHasFixedSize(true)
 
-//        Está dando erro aqui
         val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
 
         Thread {
@@ -66,7 +65,6 @@ class ListCalcActivity : AppCompatActivity() {
         inner class ListCalcViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
             fun bind(item: Calc) {
                 val tv = itemView as TextView
-
 
                 val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale("pt", "BR"))
                 val data = sdf.format(item.createdDate)

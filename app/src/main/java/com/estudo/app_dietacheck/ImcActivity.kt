@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.estudo.app_dietacheck.databinding.ActivityImcBinding
 import com.estudo.app_dietacheck.models.Calc
@@ -48,18 +49,15 @@ class ImcActivity : AppCompatActivity() {
             val height = editHeight.text.toString().toInt()
 
             val result = calculateImc(weight, height)
-            val classification = getString(classification(result))
+            val imcResponseId = imcResponse(result)
 
-            MaterialAlertDialogBuilder(
-                this,
-                androidx.appcompat.R.style.Animation_AppCompat_Dialog
-            )
-                .setTitle(R.string.txt_result)
-                .setMessage(getString(R.string.imc_response, result, classification))
-                .setIcon(R.drawable.baseline_medical_services_24_red)
-                .setPositiveButton(android.R.string.ok, null)
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.imc_response, result))
+                .setMessage(imcResponseId)
+                .setPositiveButton(android.R.string.ok) { dialog, which ->
+                    // aqui vai rodar depois do click
+                }
                 .setNegativeButton(R.string.save) { dialog, which ->
-
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
@@ -71,9 +69,11 @@ class ImcActivity : AppCompatActivity() {
                             startActivity(intent)
                         }
                     }.start()
+
                 }
                 .create()
                 .show()
+
 
             //Configurar para o teclado fechar
             //Services são usados para acessar serviços do sistema Ex: Teclado
@@ -83,7 +83,7 @@ class ImcActivity : AppCompatActivity() {
     }
 
     @StringRes
-    private fun classification(result: Double): Int {
+    private fun imcResponse(result: Double): Int {
         return when {
             result <= 18.5 -> R.string.magreza
             result <= 24.9 -> R.string.normal
