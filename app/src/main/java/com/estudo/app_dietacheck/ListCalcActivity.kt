@@ -24,6 +24,8 @@ class ListCalcActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_list_calc)
 
+
+
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
 
@@ -31,7 +33,12 @@ class ListCalcActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
+
+        //Este valor não está chegando
+        val type: String = intent?.extras?.getString("type").toString()
+
+//        Está dando erro aqui
+//        val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
 
         Thread {
             val app = application as App
@@ -52,12 +59,13 @@ class ListCalcActivity : AppCompatActivity() {
             val view = layoutInflater.inflate(android.R.layout.simple_list_item_1, parent, false)
             return ListCalcViewHolder(view)
         }
+
         override fun onBindViewHolder(holder: ListCalcViewHolder, position: Int) {
             val itemCurrent = calcList[position]
             holder.bind(itemCurrent)
         }
-        override fun getItemCount(): Int = calcList.size
 
+        override fun getItemCount(): Int = calcList.size
 
 
         inner class ListCalcViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
