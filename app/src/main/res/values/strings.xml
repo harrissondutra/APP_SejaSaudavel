@@ -6,6 +6,8 @@
         acima ou abaixo do peso desejado.\n\nPreencha os campos de peso e altura para descobrir o seu IMC.</string>
     <string name="label_weight">Peso (Kg)</string>
     <string name="label_height">Altura (cm)</string>
+    <string name="label_imc">IMC</string>
+    <string name="label_tmb">TMB</string>
     <string name="txt_calculate">Calcular IMC</string>
     <string name="validate">Todos os campos devem ser maior que 0 (zero)</string>
     <string name="titleIMC">Cálculo de IMC</string>
@@ -16,7 +18,10 @@
     <string name="sobrepeso">Sobrepeso</string>
     <string name="obesidade">Obesidade</string>
     <string name="obesidade_grave">Obesidade Grave</string>
-    <string name="messageIMC">%1$.2f\nClassificado como %2$s</string>
+    <string name="imc_response">%1$.2f\nClassificado como %2$s</string>
+    <string name="list_response">Resultado: %1$.2f, data: %2$s</string>
+    <string name="save">Salvar</string>
+    <string name="sucess_save">Dados salvos com sucesso</string>
 
 
 </resources>

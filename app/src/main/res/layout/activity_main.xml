@@ -6,14 +6,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@color/white"
+    android:layout_gravity="center"
     tools:context=".ImcActivity">
 
-    <com.google.android.material.button.MaterialButton
+   <!-- <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_inicial"
         android:text="@string/titleIMC"
-        style="@style/MaterialButton"/>
+        style="@style/MaterialButton"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/main_item"
+        />
 
 </LinearLayout>
 
