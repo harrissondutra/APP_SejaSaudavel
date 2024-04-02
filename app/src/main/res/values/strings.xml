@@ -18,7 +18,7 @@
     <string name="sobrepeso">Sobrepeso</string>
     <string name="obesidade">Obesidade</string>
     <string name="obesidade_grave">Obesidade Grave</string>
-    <string name="imc_response">%1$.2f\nClassificado como %2$s</string>
+    <string name="imc_response">Seu IMC é: %1$.2f</string>
     <string name="list_response">Resultado: %1$.2f, data: %2$s</string>
     <string name="save">Salvar</string>
     <string name="sucess_save">Dados salvos com sucesso</string>
