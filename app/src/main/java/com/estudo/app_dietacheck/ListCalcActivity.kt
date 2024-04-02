@@ -22,7 +22,7 @@ class ListCalcActivity : AppCompatActivity() {
 
         binding = ActivityListCalcBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_list_calc)
+        setContentView(binding.root)
 
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
