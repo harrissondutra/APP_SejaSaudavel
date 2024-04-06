@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.google.android.material.appbar.MaterialToolbar
+<!--    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,14 +31,17 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
-    </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.MaterialToolbar>-->
 
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar_imc"
+        />
     <ScrollView
 
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbar_imc"
         android:fillViewport="true"
         tools:context=".MainActivity">
 

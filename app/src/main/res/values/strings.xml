@@ -9,7 +9,7 @@
     <string name="label_imc">IMC</string>
     <string name="label_tmb">TMB</string>
     <string name="txt_calculate">Calcular IMC</string>
-    <string name="validate">Todos os campos devem ser maior que 0 (zero)</string>
+    <string name="validate">Todos os campos devem ser maiores que 0 (zero)</string>
     <string name="titleIMC">Cálculo de IMC</string>
     <string name="initial_value">0.0</string>
     <string name="txt_result">Seu IMC é:</string>
@@ -22,6 +22,7 @@
     <string name="list_response">Resultado: %1$.2f, data: %2$s</string>
     <string name="save">Salvar</string>
     <string name="sucess_save">Dados salvos com sucesso</string>
+    <string name="list_all">Histórico IMC</string>
 
 
 </resources>

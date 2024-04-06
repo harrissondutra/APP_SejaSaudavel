@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-        window.statusBarColor = Color.WHITE
+        window.statusBarColor = getColor(R.color.colorPrimary)
 //        window.statusBarColor = Color.rgb(233, 30, 30)
 
         val mainItens = mutableListOf<MainItem>()

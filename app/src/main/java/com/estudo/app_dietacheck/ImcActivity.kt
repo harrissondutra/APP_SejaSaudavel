@@ -3,16 +3,19 @@ package com.estudo.app_dietacheck
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.estudo.app_dietacheck.databinding.ActivityImcBinding
 import com.estudo.app_dietacheck.models.Calc
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.appbar.MaterialToolbar
 
 
 class ImcActivity : AppCompatActivity() {
@@ -29,14 +32,21 @@ class ImcActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        val toolbar = findViewById<MaterialToolbar>(R.id.main_toolbar)
+//        toolbar.setLogo(R.drawable.baseline_medical_services_24)
+        toolbar.setTitle("")
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+        toolbar.setLogo(null)
+        setSupportActionBar(toolbar)
+
+
         ///------------------////
 
         editWeight = binding.inputEdtWeight
         editHeight = binding.inputEdtHeight
 
         val btnCalculate: Button = binding.btnImcGenerate
-        val txtToolbar = binding.txtToolbar
-
+        val txtToolbar = findViewById<TextView>(R.id.txt_toolbar)
         txtToolbar.text = getString(R.string.titleIMC)
 
         btnCalculate.setOnClickListener {
@@ -64,9 +74,7 @@ class ImcActivity : AppCompatActivity() {
                         dao.insert(Calc(type = "imc", res = result))
 
                         runOnUiThread {
-                            val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
-                            intent.putExtra("type", "imc")
-                            startActivity(intent)
+                            openListActivity()
                         }
                     }.start()
 
@@ -80,6 +88,25 @@ class ImcActivity : AppCompatActivity() {
             val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_search) {
+            openListActivity()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun openListActivity() {
+        val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
+        intent.putExtra("type", "imc")
+        startActivity(intent)
     }
 
     @StringRes

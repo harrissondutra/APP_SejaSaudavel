@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.estudo.app_dietacheck.databinding.ActivityListCalcBinding
 import com.estudo.app_dietacheck.models.Calc
+import com.google.android.material.appbar.MaterialToolbar
 import java.util.Locale
 
 class ListCalcActivity : AppCompatActivity() {
@@ -24,6 +25,15 @@ class ListCalcActivity : AppCompatActivity() {
         binding = ActivityListCalcBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.main_toolbar)
+        toolbar.setTitle("")
+        toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+        toolbar.setLogo(null)
+        setSupportActionBar(toolbar)
+
+        val txtToolbar = findViewById<TextView>(R.id.txt_toolbar)
+        txtToolbar.text = getString(R.string.list_all)
 
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
