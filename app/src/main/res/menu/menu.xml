@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--
     <item
-        android:id="@+id/menu_search"
-        android:title="@string/list_all" />
+        android:id="@+id/menu_history"
+        android:title="@string/list_all"
+        android:icon="@drawable/baseline_edit_24"
+        android:contentDescription="@string/principal_name"
+        app:showAsAction="ifRoom"
+        />
+-->
+
+    <item
+        android:id="@+id/menu_favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/baseline_favorite_24"
+        android:contentDescription="@string/principal_name"
+        app:showAsAction="ifRoom"
+        />
+
+
+    <item
+        android:id="@+id/menu_more"
+        android:title="@string/more"
+        android:icon="@drawable/baseline_more_vert_24"
+        android:contentDescription="@string/principal_name"
+        app:showAsAction="withText"
+        />
+
 </menu>

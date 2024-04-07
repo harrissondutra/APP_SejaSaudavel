@@ -32,7 +32,7 @@ class ListCalcActivity : AppCompatActivity() {
         toolbar.setLogo(null)
         setSupportActionBar(toolbar)
 
-        val txtToolbar = findViewById<TextView>(R.id.txt_toolbar)
+        val txtToolbar = findViewById<TextView>(R.id.main_toolbar)
         txtToolbar.text = getString(R.string.list_all)
 
         val result = mutableListOf<Calc>()

@@ -23,6 +23,9 @@
     <string name="save">Salvar</string>
     <string name="sucess_save">Dados salvos com sucesso</string>
     <string name="list_all">Histórico IMC</string>
+    <string name="favorite">Favoritos</string>
+    <string name="more">Outros</string>
+    <string name="appBarScroll">ScrollRecycler\n</string>
 
 
 </resources>

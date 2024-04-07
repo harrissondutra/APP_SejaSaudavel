@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
@@ -32,12 +31,29 @@ class ImcActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val toolbar = findViewById<MaterialToolbar>(R.id.main_toolbar)
-//        toolbar.setLogo(R.drawable.baseline_medical_services_24)
-        toolbar.setTitle("")
+        val toolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
+        toolbar.setTitle(getString(R.string.titleIMC))
         toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
-        toolbar.setLogo(null)
-        setSupportActionBar(toolbar)
+
+
+
+        toolbar.setNavigationOnClickListener {
+
+        }
+
+        toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.menu_favorite -> {
+                    Toast.makeText(this, "Arquivo Salvo", Toast.LENGTH_SHORT).show()
+
+                    true
+                }
+
+
+                else -> false
+            }
+
+        }
 
 
         ///------------------////
@@ -46,8 +62,9 @@ class ImcActivity : AppCompatActivity() {
         editHeight = binding.inputEdtHeight
 
         val btnCalculate: Button = binding.btnImcGenerate
-        val txtToolbar = findViewById<TextView>(R.id.txt_toolbar)
-        txtToolbar.text = getString(R.string.titleIMC)
+        val materialToolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
+//        txtToolbar.text = getString(R.string.titleIMC)
+
 
         btnCalculate.setOnClickListener {
             if (!validate()) {
@@ -97,7 +114,7 @@ class ImcActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_search) {
+        if (item.itemId == R.id.menu_more) {
             openListActivity()
         }
         return super.onOptionsItemSelected(item)
