@@ -1,6 +1,5 @@
 package com.estudo.app_dietacheck
 
-import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.view.View
@@ -27,13 +26,11 @@ class ListCalcActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.main_toolbar)
-        toolbar.setTitle("")
+        toolbar.setTitle(getString(R.string.list_all))
         toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
         toolbar.setLogo(null)
         setSupportActionBar(toolbar)
 
-        val txtToolbar = findViewById<TextView>(R.id.main_toolbar)
-        txtToolbar.text = getString(R.string.list_all)
 
         val result = mutableListOf<Calc>()
         val adapter = ListCalcAdapter(result)
@@ -41,7 +38,8 @@ class ListCalcActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        val type = intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
+        val type =
+            intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
 
         Thread {
             val app = application as App
@@ -79,8 +77,9 @@ class ListCalcActivity : AppCompatActivity() {
                 val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale("pt", "BR"))
                 val data = sdf.format(item.createdDate)
                 val res = item.res
+                val classification = item.classification
 
-                tv.text = getString(R.string.list_response, res, data)
+                tv.text = getString(R.string.list_response, data, classification, res)
 
 
             }

@@ -34,6 +34,7 @@ class ImcActivity : AppCompatActivity() {
         val toolbar: MaterialToolbar = findViewById(R.id.main_toolbar)
         toolbar.setTitle(getString(R.string.titleIMC))
         toolbar.setNavigationIcon(R.drawable.baseline_arrow_back_24)
+        toolbar.setCollapseIcon(R.drawable.outline_assignment_24)
 
 
 
@@ -43,8 +44,8 @@ class ImcActivity : AppCompatActivity() {
 
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.menu_favorite -> {
-                    Toast.makeText(this, "Arquivo Salvo", Toast.LENGTH_SHORT).show()
+                R.id.menu_more -> {
+                    openListActivity()
 
                     true
                 }
@@ -77,6 +78,7 @@ class ImcActivity : AppCompatActivity() {
 
             val result = calculateImc(weight, height)
             val imcResponseId = imcResponse(result)
+            val classification = getString(imcResponse(result))
 
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.imc_response, result))
@@ -88,7 +90,7 @@ class ImcActivity : AppCompatActivity() {
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
-                        dao.insert(Calc(type = "imc", res = result))
+                        dao.insert(Calc(type = "imc", res = result, classification = classification))
 
                         runOnUiThread {
                             openListActivity()

@@ -17,6 +17,9 @@ data class Calc(
     @ColumnInfo(name = "res")
     val res: Double,
 
+    @ColumnInfo(name = "classification")
+    val classification: String,
+
     @ColumnInfo(name = "createdDate")
     val createdDate: Date = Date()
 )

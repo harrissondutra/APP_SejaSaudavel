@@ -19,7 +19,7 @@
     <string name="obesidade">Obesidade</string>
     <string name="obesidade_grave">Obesidade Grave</string>
     <string name="imc_response">Seu IMC é: %1$.2f</string>
-    <string name="list_response">Resultado: %1$.2f, data: %2$s</string>
+    <string name="list_response">%1$s - %2$s - IMC: %3$.2f </string>
     <string name="save">Salvar</string>
     <string name="sucess_save">Dados salvos com sucesso</string>
     <string name="list_all">Histórico IMC</string>
