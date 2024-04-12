@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
-
+    id("androidx.room") version "2.6.1" apply false
 }
 
 android {
@@ -17,6 +17,17 @@ android {
         versionName = "1.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true"
+
+                    // other options...
+                )
+            }
+        }
     }
 
     buildTypes {
@@ -34,14 +45,18 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
+
+   
+
+
 }
 
 dependencies {
-
 
 
     implementation(libs.androidx.core.ktx)
@@ -54,7 +69,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     val room_version = "2.6.1"
-
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     kapt("androidx.room:room-compiler:$room_version")

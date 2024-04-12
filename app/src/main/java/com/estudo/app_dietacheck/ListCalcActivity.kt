@@ -41,6 +41,13 @@ class ListCalcActivity : AppCompatActivity() {
         val type =
             intent?.extras?.getString("type") ?: throw IllegalStateException("type not found")
 
+
+        //Ao clicar na seta de voltar, executa este método
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+
         Thread {
             val app = application as App
             val dao = app.db.calcDao()

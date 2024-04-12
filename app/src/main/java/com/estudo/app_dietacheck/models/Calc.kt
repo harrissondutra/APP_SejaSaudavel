@@ -1,5 +1,6 @@
 package com.estudo.app_dietacheck.models
 
+import androidx.room.AutoMigration
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

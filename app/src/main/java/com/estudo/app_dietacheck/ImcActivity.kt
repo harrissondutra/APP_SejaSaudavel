@@ -37,23 +37,22 @@ class ImcActivity : AppCompatActivity() {
         toolbar.setCollapseIcon(R.drawable.outline_assignment_24)
 
 
-
+        //Ao clicar na seta de voltar, executa este método
         toolbar.setNavigationOnClickListener {
-
+            onBackPressedDispatcher.onBackPressed()
+            finish()
         }
 
+        // Ao clicar no ícone de histórico realiza este método
         toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.menu_more -> {
                     openListActivity()
-
                     true
                 }
 
-
                 else -> false
             }
-
         }
 
 
@@ -90,7 +89,13 @@ class ImcActivity : AppCompatActivity() {
                     Thread {
                         val app = application as App
                         val dao = app.db.calcDao()
-                        dao.insert(Calc(type = "imc", res = result, classification = classification))
+                        dao.insert(
+                            Calc(
+                                type = "imc",
+                                res = result,
+                                classification = classification
+                            )
+                        )
 
                         runOnUiThread {
                             openListActivity()
@@ -145,8 +150,8 @@ class ImcActivity : AppCompatActivity() {
 
     private fun validate(): Boolean {
         return (editWeight.text.toString().isNotEmpty()
-                && editHeight.text.toString().isNotEmpty()
-                && !editWeight.text.toString().startsWith("0")
-                && !editHeight.text.toString().startsWith("0"))
+            && editHeight.text.toString().isNotEmpty()
+            && !editWeight.text.toString().startsWith("0")
+            && !editHeight.text.toString().startsWith("0"))
     }
 }
